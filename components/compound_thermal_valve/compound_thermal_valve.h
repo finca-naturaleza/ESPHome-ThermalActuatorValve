@@ -1,7 +1,7 @@
 #pragma once
 
 #include "esphome.h"
-#include "esphome/components/thermal_valve/thermal_valve.h"  // Make sure this path matches your repo structure
+#include "../thermal_valve/thermal_valve.h"  // Make sure this path matches your repo structure
 
 namespace esphome {
 namespace compound_thermal_valve {
