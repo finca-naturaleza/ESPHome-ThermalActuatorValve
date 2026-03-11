@@ -16,7 +16,7 @@ CONF_DEADBAND = "deadband"
 
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(ThermalValve),
+        cv.GenerateID(): cv.declare_id(ThermalValve),
 
         cv.Required(CONF_SENSOR): cv.use_id(sensor.Sensor),
         cv.Required(CONF_RELAY): cv.use_id(output.BinaryOutput),
