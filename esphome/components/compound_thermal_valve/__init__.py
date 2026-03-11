@@ -20,14 +20,8 @@ CONF_VALVE8 = "valve8"
 CONFIG_SCHEMA = cv.Schema(
     {
         cv.GenerateID(): cv.declare_id(CompoundThermalValve),
-        cv.Required(CONF_VALVE1): thermal_valve.CONFIG_SCHEMA(CompoundThermalValve).extend(),
-        cv.Optional(CONF_VALVE2): thermal_valve.CONFIG_SCHEMA(CompoundThermalValve).extend(),
-        cv.Optional(CONF_VALVE3): thermal_valve.CONFIG_SCHEMA(CompoundThermalValve).extend(),
-        cv.Optional(CONF_VALVE4): thermal_valve.CONFIG_SCHEMA(CompoundThermalValve).extend(),
-        cv.Optional(CONF_VALVE5): thermal_valve.CONFIG_SCHEMA(CompoundThermalValve).extend(),
-        cv.Optional(CONF_VALVE6): thermal_valve.CONFIG_SCHEMA(CompoundThermalValve).extend(),
-        cv.Optional(CONF_VALVE7): thermal_valve.CONFIG_SCHEMA(CompoundThermalValve).extend(),
-        cv.Optional(CONF_VALVE8): thermal_valve.CONFIG_SCHEMA(CompoundThermalValve).extend(),
+        cv.Required(CONF_VALVE1): thermal_valve.CONFIG_SCHEMA,
+        cv.Optional(CONF_VALVE2): thermal_valve.CONFIG_SCHEMA,
     }
 ).extend(cv.COMPONENT_SCHEMA)
 
