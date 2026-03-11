@@ -5,7 +5,7 @@ from esphome.const import CONF_ID
 
 compound_thermal_valve_ns = cg.esphome_ns.namespace("compound_thermal_valve")
 CompoundThermalValve = compound_thermal_valve_ns.class_(
-    "EmptyCompoundSensor", cg.PollingComponent
+    "CompoundThermalValve", cg.Component
 )
 
 CONF_VALVE1 = "valve1"
@@ -22,13 +22,18 @@ CONFIG_SCHEMA = cv.Schema(
         cv.GenerateID(): cv.declare_id(CompoundThermalValve),
         cv.Required(CONF_VALVE1): thermal_valve.CONFIG_SCHEMA,
         cv.Optional(CONF_VALVE2): thermal_valve.CONFIG_SCHEMA,
+        cv.Optional(CONF_VALVE3): thermal_valve.CONFIG_SCHEMA,
+        cv.Optional(CONF_VALVE4): thermal_valve.CONFIG_SCHEMA,
+        cv.Optional(CONF_VALVE5): thermal_valve.CONFIG_SCHEMA,
+        cv.Optional(CONF_VALVE6): thermal_valve.CONFIG_SCHEMA,
+        cv.Optional(CONF_VALVE7): thermal_valve.CONFIG_SCHEMA,
+        cv.Optional(CONF_VALVE8): thermal_valve.CONFIG_SCHEMA,
     }
 ).extend(cv.COMPONENT_SCHEMA)
 
 
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
-    await cg.register_component(var, config)
 
     if CONF_VALVE1 in config:
         valve = await thermal_valve.to_code(config[CONF_VALVE1], parent=var)
@@ -61,3 +66,5 @@ async def to_code(config):
     if CONF_VALVE8 in config:
         valve = await thermal_valve.to_code(config[CONF_VALVE8], parent=var)
         cg.add(var.set_valve8(valve))
+
+    await cg.register_component(var, config)
