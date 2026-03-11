@@ -7,7 +7,7 @@ from esphome.const import CONF_ID, CONF_UPDATE_INTERVAL
 AUTO_LOAD = ["number"]
 
 pid_ns = cg.esphome_ns.namespace("thermal_valve")
-PIDPulse = pid_ns.class_("ThermalValve", cg.Component)
+ThermalValve = pid_ns.class_("ThermalValve", cg.Component)
 
 CONF_SENSOR = "sensor"
 CONF_RELAY = "relay"
@@ -16,7 +16,7 @@ CONF_DEADBAND = "deadband"
 
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(): cv.declare_id(PIDPulse),
+        cv.GenerateID(): cv.declare_id(ThermalValve),
 
         cv.Required(CONF_SENSOR): cv.use_id(sensor.Sensor),
         cv.Required(CONF_RELAY): cv.use_id(output.BinaryOutput),
