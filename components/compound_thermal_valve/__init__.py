@@ -3,6 +3,9 @@ import esphome.config_validation as cv
 from .. import thermal_valve as thermal_valve
 from esphome.const import CONF_ID
 
+pid_ns = cg.esphome_ns.namespace("thermal_valve")
+ThermalValve = pid_ns.class_("ThermalValve", cg.Component)
+
 compound_thermal_valve_ns = cg.esphome_ns.namespace("compound_thermal_valve")
 CompoundThermalValve = compound_thermal_valve_ns.class_(
     "CompoundThermalValve", cg.Component
@@ -35,9 +38,8 @@ CONFIG_SCHEMA = cv.Schema(
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
 
-    if CONF_VALVE1 in config:
-        valve = await thermal_valve.to_code(config[CONF_VALVE1], parent=var)
-        cg.add(var.set_valve1(valve))
+    valve = await thermal_valve.to_code(config[CONF_VALVE1], parent=var)
+    cg.add(var.set_valve1(valve))
 
     if CONF_VALVE2 in config:
         valve = await thermal_valve.to_code(config[CONF_VALVE2], parent=var)

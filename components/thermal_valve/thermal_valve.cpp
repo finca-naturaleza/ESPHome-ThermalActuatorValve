@@ -26,7 +26,6 @@ void ThermalValve::loop() {
   else
     relay_->turn_off();
     
-  last_error_ = error;
   last_time_ = now;
 }
 
