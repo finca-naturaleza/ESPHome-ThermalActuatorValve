@@ -1,6 +1,6 @@
 import esphome.codegen as cg
 import esphome.config_validation as cv
-from ..thermal_valve import thermal_valve
+from .. import thermal_valve as thermal_valve
 from esphome.const import CONF_ID
 
 compound_thermal_valve_ns = cg.esphome_ns.namespace("compound_thermal_valve")
