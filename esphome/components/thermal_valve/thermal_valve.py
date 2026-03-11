@@ -2,7 +2,7 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 
 from esphome.components import sensor, output, number
-from esphome.const import CONF_ID, CONF_UPDATE_INTERVAL
+from esphome.const import CONF_ID, CONF_UPDATE_INTERVAL, CONF_OUTPUT_ID
 
 AUTO_LOAD = ["number"]
 
@@ -16,7 +16,7 @@ CONF_DEADBAND = "deadband"
 
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(): cv.declare_id(ThermalValve),
+        cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(ThermalValve),
 
         cv.Required(CONF_SENSOR): cv.use_id(sensor.Sensor),
         cv.Required(CONF_RELAY): cv.use_id(output.BinaryOutput),
